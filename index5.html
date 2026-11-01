@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Світло для Херсона</title>
+    <style>
+        :root { --bg: #667eea; --panel: #ffffff; --text: #333333; --muted: #666666; --accent: #667eea; --safe: #2f9e44; }
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: var(--text); font: 16px/1.65 'Segoe UI', Tahoma, sans-serif; padding: 20px; }
+        main { width: min(900px, 100%); margin: 0 auto; padding: 50px; background: var(--panel); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+        h1 { margin: 0 0 15px; color: var(--accent); font-size: clamp(2.4rem, 7vw, 3.6rem); line-height: 1.1; text-align: center; }
+        h2 { color: #764ba2; margin-top: 0; }
+        .label { color: #764ba2; font-size: .85rem; text-align: center; font-weight: 700; }
+        .lead, .source { color: var(--muted); }
+        .lead { max-width: 760px; margin: 0 auto 28px; padding: 24px; border-radius: 12px; background: #f5f6f8; text-align: center; font-style: italic; }
+        .panel { margin-top: 28px; padding: 28px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 12px; }
+        .case { border-left: 4px solid var(--accent); padding-left: 18px; }
+        .choices { display: grid; gap: 12px; margin-top: 24px; }
+        button, a { display: block; width: 100%; padding: 16px 20px; border: 0; border-radius: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font: inherit; text-align: left; cursor: pointer; text-decoration: none; box-shadow: 0 5px 20px rgba(102,126,234,.3); }
+        button:hover, a:hover { transform: translateY(-2px); }
+        .result { margin-top: 22px; padding: 18px; border-radius: 8px; background: #e6fcf5; border: 1px solid var(--safe); }
+        .start-button { text-align: center; font-size: 1.15rem; }
+        .scene { margin-top: 28px; }
+        .scene[hidden] { display: none; }
+        .scene-number { color: var(--accent); font: 700 12px Arial, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+        .stat { padding: 14px; border: 1px solid #627d98; border-radius: 8px; text-align: center; }
+        .stat strong { display: block; font-size: 1.5rem; }
+        @media (max-width: 560px) { .stats { grid-template-columns: 1fr; } }
+        .back { margin-top: 28px; background: transparent; color: #667eea; box-shadow: none; text-align: center; }
+        .top-menu { position: fixed; top: 16px; right: 16px; display: flex; gap: 10px; z-index: 3; }
+        .menu-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: white; box-shadow: 0 4px 16px #0003; }
+        strong { color: #667eea; }
+        @media (max-width: 600px) { body { padding: 12px; } main { padding: 28px 20px; } .top-menu { top: 8px; right: 8px; } }
+    </style>
+</head>
+<body>
+<div class="top-menu"><div class="menu-icon">⚙️</div><div class="menu-icon">🗺️</div><div class="menu-icon">💬</div></div>
+<main>
+    <p class="label">Реальний кейс із книги «Передрук» · розділ 3.4</p>
+    <h1>Світло для Херсона</h1>
+    <p class="lead">Інтерактивне розширення реального кейсу про генератор, терміновість і передоплату.</p>
+    <div class="choices"><button class="start-button" onclick="startStory()">🚀 Увійти в історію</button></div>
+    <section class="panel scene case" id="scene1" hidden>
+        <p class="scene-number">Сцена 1 · Пошук</p>
+        <p>У 2023 році 42-річна мешканка Херсона шукала генератор для будинку після перебоїв з електрикою. На сайті оголошень вона побачила пропозицію з помірною ціною та швидкою доставкою.</p>
+        <p><strong>Що перевіряєш першим?</strong></p>
+        <div class="choices">
+            <button onclick="choose(1, 1)">Порівнюю ціну, фото, відгуки та історію профілю на незалежних ресурсах.</button>
+            <button onclick="choose(1, 1)">Знаходжу офіційний сайт продавця й телефоную туди самостійно.</button>
+            <button onclick="choose(1, 0)">Пишу продавцю, що готовий одразу внести завдаток.</button>
+        </div>
+    </section>
+    <section class="panel scene" id="scene2" hidden>
+        <p class="scene-number">Сцена 2 · Терміновість</p>
+        <p>Продавець пише грамотно, посилається на складну ситуацію в місті й каже, що товар є на складі. Для «бронювання» він просить передоплату 4 800 гривень.</p>
+        <p><strong>Як відповідаєш?</strong></p>
+        <div class="choices">
+            <button onclick="choose(2, 1)">Прошу оплату після огляду або використовую захищений спосіб із гарантією.</button>
+            <button onclick="choose(2, 1)">Прошу відеопідтвердження товару й перевіряю адресу складу окремо.</button>
+            <button onclick="choose(2, 0)">Переказую завдаток, бо товар можуть купити інші.</button>
+        </div>
+    </section>
+    <section class="panel scene" id="scene3" hidden>
+        <p class="scene-number">Сцена 3 · Перевірка</p>
+        <p>Фото генератора виглядає переконливо, але продавець уникає конкретної адреси й наполягає на спілкуванні лише в месенджері.</p>
+        <p><strong>Яка ознака важить найбільше?</strong></p>
+        <div class="choices">
+            <button onclick="choose(3, 1)">Відмова від незалежної перевірки та тиск «потрібно зараз».</button>
+            <button onclick="choose(3, 1)">Відсутність зрозумілих умов повернення й документів продавця.</button>
+            <button onclick="choose(3, 0)">Гарні фото, грамотні повідомлення та низька ціна є достатніми доказами.</button>
+        </div>
+    </section>
+    <section class="panel scene" id="scene4" hidden>
+        <p class="scene-number">Сцена 4 · Після рішення</p>
+        <p>Якщо продавець справжній, перевірка не повинна його лякати. Якщо після відмови від передоплати він зникає, це важлива ознака схеми.</p>
+        <p><strong>Що робиш із підозрілим оголошенням?</strong></p>
+        <div class="choices">
+            <button onclick="finish(1)">Зберігаю оголошення, листування та реквізити й повідомляю платформу та поліцію.</button>
+            <button onclick="finish(1)">Попереджаю знайомих і не передаю оголошення далі без пояснення ризику.</button>
+            <button onclick="finish(0)">Видаляю листування й просто шукаю інший варіант.</button>
+        </div>
+    </section>
+    <section class="panel scene" id="final" hidden>
+        <p class="scene-number">Фінал · Результат перевірки</p>
+        <h2>Передоплата не є доказом угоди</h2>
+        <p id="finalText"></p>
+        <div class="stats"><div class="stat"><strong id="safeCount">0</strong>безпечних рішень</div><div class="stat"><strong id="riskCount">0</strong>ризикових рішень</div><div class="stat"><strong id="score">0</strong>балів</div></div>
+        <div class="choices"><button onclick="restart()">🔄 Пройти історію ще раз</button></div>
+    </section>
+    <section class="panel">
+        <h2>Що показує цей кейс</h2>
+        <p>Шахрай посилює довіру низькою ціною, терміновістю та правдоподібною історією. Безпечніша купівля не вимагає переказу незнайомцю лише через повідомлення. Перевіряй продавця на незалежних ресурсах і не плати наперед без гарантій.</p>
+        <p class="source">Основа: «Передрук», розділ 3.4, історія «Світло для Херсона», с. 117.</p>
+    </section>
+    <a class="back" href="index.html">← Повернутися до добірки історій</a>
+</main>
+<script>
+    let safeCount = 0;
+    let riskCount = 0;
+    let score = 0;
+    function choose(scene, points) {
+        if (points) { safeCount += 1; score += 1; } else riskCount += 1;
+        document.getElementById('scene' + scene).hidden = true;
+        document.getElementById('scene' + (scene + 1)).hidden = false;
+    }
+    function startStory() { document.getElementById('scene1').hidden = false; document.querySelector('.start-button').parentElement.hidden = true; }
+    function finish(points) {
+        if (points) { safeCount += 1; score += 1; } else riskCount += 1;
+        document.getElementById('scene4').hidden = true;
+        document.getElementById('final').hidden = false;
+        document.getElementById('safeCount').textContent = safeCount;
+        document.getElementById('riskCount').textContent = riskCount;
+        document.getElementById('score').textContent = score;
+        document.getElementById('finalText').textContent = score >= 3 ? 'Ти перевірив продавця, не дозволив терміновості замінити докази й зберіг інформацію про схему.' : 'Кейс показує, як низька ціна, терміновість і співчуття можуть підштовхнути до необдуманої передоплати.';
+    }
+    function restart() {
+        safeCount = 0; riskCount = 0; score = 0;
+        document.querySelectorAll('.scene').forEach(scene => scene.hidden = true);
+        document.getElementById('scene1').hidden = false;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Помилковий переказ</title>
+    <style>
+        :root { --bg: #667eea; --panel: #ffffff; --text: #333333; --muted: #666666; --accent: #667eea; --safe: #2f9e44; }
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: var(--text); font: 16px/1.65 'Segoe UI', Tahoma, sans-serif; padding: 20px; }
+        main { width: min(900px, 100%); margin: 0 auto; padding: 50px; background: var(--panel); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+        h1 { margin: 0 0 15px; color: var(--accent); font-size: clamp(2.4rem, 7vw, 3.6rem); line-height: 1.1; text-align: center; }
+        h2 { color: #764ba2; margin-top: 0; }
+        .label { color: #764ba2; font-size: .85rem; text-align: center; font-weight: 700; }
+        .lead, .source { color: var(--muted); }
+        .lead { max-width: 760px; margin: 0 auto 28px; padding: 24px; border-radius: 12px; background: #f5f6f8; text-align: center; font-style: italic; }
+        .panel { margin-top: 28px; padding: 28px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 12px; }
+        .case { border-left: 4px solid var(--accent); padding-left: 18px; }
+        .choices { display: grid; gap: 12px; margin-top: 24px; }
+        button, a { display: block; width: 100%; padding: 16px 20px; border: 0; border-radius: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font: inherit; text-align: left; cursor: pointer; text-decoration: none; box-shadow: 0 5px 20px rgba(102,126,234,.3); }
+        button:hover, a:hover { transform: translateY(-2px); }
+        .result { margin-top: 22px; padding: 18px; border-radius: 8px; background: #e6fcf5; border: 1px solid var(--safe); }
+        .start-button { text-align: center; font-size: 1.15rem; }
+        .scene { margin-top: 28px; }
+        .scene[hidden] { display: none; }
+        .scene-number { color: var(--accent); font: 700 12px Arial, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+        .stat { padding: 14px; border: 1px solid #766da1; border-radius: 8px; text-align: center; }
+        .stat strong { display: block; font-size: 1.5rem; }
+        @media (max-width: 560px) { .stats { grid-template-columns: 1fr; } }
+        .back { margin-top: 28px; background: transparent; color: #667eea; box-shadow: none; text-align: center; }
+        .top-menu { position: fixed; top: 16px; right: 16px; display: flex; gap: 10px; z-index: 3; }
+        .menu-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: white; box-shadow: 0 4px 16px #0003; }
+        strong { color: #667eea; }
+        @media (max-width: 600px) { body { padding: 12px; } main { padding: 28px 20px; } .top-menu { top: 8px; right: 8px; } }
+    </style>
+</head>
+<body>
+<div class="top-menu"><div class="menu-icon">⚙️</div><div class="menu-icon">🗺️</div><div class="menu-icon">💬</div></div>
+<main>
+    <p class="label">Реальний сценарій із книги «Передрук» · розділ 5.2</p>
+    <h1>Помилковий переказ</h1>
+    <p class="lead">Інтерактивне розширення схеми «сліпого мула», у якій шахрай використовує чужу картку як проміжну ланку.</p>
+    <div class="choices"><button class="start-button" onclick="startStory()">🚀 Увійти в історію</button></div>
+    <section class="panel scene case" id="scene1" hidden>
+        <p class="scene-number">Сцена 1 · Несподіване зарахування</p>
+        <p>На картку несподівано надходять гроші. Майже одразу незнайомець пише, що переказ був помилковим, і просить повернути суму на іншу картку.</p>
+        <p><strong>Що робиш першим?</strong></p>
+        <div class="choices">
+            <button onclick="choose(1, 1)">Не рухаю гроші та перевіряю операцію у своєму банківському застосунку.</button>
+            <button onclick="choose(1, 1)">Зберігаю повідомлення й звертаюся до банку через офіційний номер.</button>
+            <button onclick="choose(1, 0)">Одразу повертаю всю суму, щоб не мати проблем.</button>
+        </div>
+    </section>
+    <section class="panel scene" id="scene2" hidden>
+        <p class="scene-number">Сцена 2 · Тиск</p>
+        <p>Незнайомець пише, що йому терміново потрібні гроші. Він надсилає іншу картку для повернення та обіцяє, що «так буде швидше».</p>
+        <p><strong>Який сигнал не можна ігнорувати?</strong></p>
+        <div class="choices">
+            <button onclick="choose(2, 1)">Прохання переказати кошти не на той самий рахунок і тиск на швидкість.</button>
+            <button onclick="choose(2, 1)">Відмова співрозмовника вирішувати питання через банк.</button>
+            <button onclick="choose(2, 0)">Переконання, що чесна людина завжди має отримати гроші негайно.</button>
+        </div>
+    </section>
+    <section class="panel scene" id="scene3" hidden>
+        <p class="scene-number">Сцена 3 · Офіційна процедура</p>
+        <p>Банк підтверджує: зарахування справді є, але його походження ще перевіряють. Самостійний переказ може зробити тебе проміжною ланкою, через яку проходять чужі викрадені кошти.</p>
+        <p><strong>Яку дію обираєш?</strong></p>
+        <div class="choices">
+            <button onclick="choose(3, 1)">Дію лише за інструкцією банку й не погоджую жодного переказу в чаті.</button>
+            <button onclick="choose(3, 1)">Прошу банк зафіксувати звернення та пояснити порядок повернення.</button>
+            <button onclick="choose(3, 0)">Переказую суму частинами на запропоновані картки.</button>
+        </div>
+    </section>
+    <section class="panel scene" id="scene4" hidden>
+        <p class="scene-number">Сцена 4 · Докази</p>
+        <p>Ти маєш повідомлення, реквізити, час зарахування та історію розмови. Ці дані можуть допомогти банку й правоохоронцям побачити ланцюжок переказів.</p>
+        <p><strong>Що залишаєш у себе?</strong></p>
+        <div class="choices">
+            <button onclick="finish(1)">Зберігаю скриншоти й не видаляю листування до завершення перевірки.</button>
+            <button onclick="finish(1)">Блокую незнайомця після фіксації доказів і передаю дані банку.</button>
+            <button onclick="finish(0)">Видаляю все після повернення коштів, щоб забути ситуацію.</button>
+        </div>
+    </section>
+    <section class="panel scene" id="final" hidden>
+        <p class="scene-number">Фінал · Ти не став ланкою схеми</p>
+        <h2>Повернення коштів має проходити через банк</h2>
+        <p id="finalText"></p>
+        <div class="stats"><div class="stat"><strong id="safeCount">0</strong>безпечних рішень</div><div class="stat"><strong id="riskCount">0</strong>ризикових рішень</div><div class="stat"><strong id="score">0</strong>балів</div></div>
+        <div class="choices"><button onclick="restart()">🔄 Пройти історію ще раз</button></div>
+    </section>
+    <section class="panel">
+        <h2>Що показує цей кейс</h2>
+        <p>Справжнє зарахування не означає, що прохання про повернення справжнє. Якщо гроші були викрадені в третьої особи, ваш переказ може зробити вас ланкою злочинної схеми. Не рухайте кошти без інструкції банку.</p>
+        <p class="source">Основа: «Передрук», розділ 5.2 «Помилковий переказ» або «Сліпий мул», с. 188.</p>
+    </section>
+    <a class="back" href="index.html">← Повернутися до добірки історій</a>
+</main>
+<script>
+    let safeCount = 0;
+    let riskCount = 0;
+    let score = 0;
+    function choose(scene, points) {
+        if (points) { safeCount += 1; score += 1; } else riskCount += 1;
+        document.getElementById('scene' + scene).hidden = true;
+        document.getElementById('scene' + (scene + 1)).hidden = false;
+    }
+    function startStory() { document.getElementById('scene1').hidden = false; document.querySelector('.start-button').parentElement.hidden = true; }
+    function finish(points) {
+        if (points) { safeCount += 1; score += 1; } else riskCount += 1;
+        document.getElementById('scene4').hidden = true;
+        document.getElementById('final').hidden = false;
+        document.getElementById('safeCount').textContent = safeCount;
+        document.getElementById('riskCount').textContent = riskCount;
+        document.getElementById('score').textContent = score;
+        document.getElementById('finalText').textContent = score >= 3 ? 'Ти не переказав кошти під тиском і залишив банку дані для перевірки. Це і є безпечна реакція на схему «сліпого мула».' : 'Кейс показує: навіть реальне зарахування не робить прохання незнайомця безпечним. Не переміщуй кошти без банку.';
+    }
+    function restart() {
+        safeCount = 0; riskCount = 0; score = 0;
+        document.querySelectorAll('.scene').forEach(scene => scene.hidden = true);
+        document.getElementById('scene1').hidden = false;
+    }
+</script>
+</body>
+</html>
