@@ -24,6 +24,15 @@
         .back { background: transparent; color: #667eea; box-shadow: none; text-align: center; }
         .top-menu { position: fixed; top: 16px; right: 16px; display: flex; gap: 10px; z-index: 3; }
         .menu-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: white; box-shadow: 0 4px 16px #0003; }
+        .modal { display: none; position: fixed; inset: 0; z-index: 10; padding: 24px; background: rgba(25, 20, 55, .55); }
+        .modal.open { display: grid; place-items: center; }
+        .modal-card { width: min(620px, 100%); max-height: 85vh; overflow: auto; padding: 28px; border-radius: 16px; background: white; box-shadow: 0 20px 60px #0004; }
+        .modal-card h2 { margin-top: 0; }
+        .modal-close { float: right; width: auto; padding: 4px 10px; background: transparent; color: #667eea; box-shadow: none; font-size: 1.4rem; }
+        .modal-card button { margin-top: 12px; }
+        .modal-card input, .modal-card select { width: 100%; margin: 8px 0 16px; }
+        .map-list { display: grid; gap: 8px; margin: 18px 0; }
+        .map-list span { padding: 10px 12px; border-radius: 8px; background: #f1f3f5; }
         .scene[hidden] { display: none; }
         .scene-number { color: var(--accent); font: 700 12px Arial, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
         .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
@@ -36,7 +45,10 @@
     </style>
 </head>
 <body>
-<div class="top-menu"><div class="menu-icon">⚙️</div><div class="menu-icon">🗺️</div><div class="menu-icon">💬</div></div>
+<div class="top-menu"><button class="menu-icon" onclick="openModal('settingsModal')" title="Налаштування">⚙️</button><button class="menu-icon" onclick="openModal('mapModal')" title="Карта історії">🗺️</button><button class="menu-icon" onclick="openModal('supportModal')" title="Підтримка">💬</button></div>
+<div class="modal" id="settingsModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>⚙️ Налаштування</h2><label for="zoomRange">Масштаб тексту</label><input id="zoomRange" type="range" min="90" max="120" value="100" oninput="changeZoom(this.value)"><label for="themeSelect">Тема</label><select id="themeSelect" onchange="changeTheme(this.value)"><option value="light">Світла</option><option value="soft">М'яка</option></select><button onclick="restart()">🔄 Скинути прогрес</button></div></div>
+<div class="modal" id="mapModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>🗺️ Карта історії</h2><p>Ти проходиш реальний кейс про підміну номера та голосу.</p><div class="map-list"><span>1. Дзвінок із підміненого номера</span><span>2. Термінове прохання про код</span><span>3. Перевірка через офіційний канал</span><span>4. Фіксація доказів і попередження команди</span></div><button onclick="closeModals()">Повернутися до історії</button></div></div>
+<div class="modal" id="supportModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>💬 Підтримка та довідка</h2><p><strong>Caller ID</strong> — номер, який показується на екрані. Його можна підмінити.</p><p><strong>ШІ-голос</strong> — штучно створений голос, схожий на голос знайомої людини.</p><p><strong>Соціальна інженерія</strong> — тиск на людину через страх, довіру або терміновість.</p><p><strong>Джерело:</strong> «Передрук», розділ 3.2, приклад із Полтави, с. 106.</p></div></div>
 <main>
     <p class="label">Реальний кейс із книги «Передрук» · розділ 3</p>
     <h1>Дзвінок від директора</h1>
@@ -119,9 +131,14 @@
     }
     function restart() {
         safeCount = 0; riskCount = 0; score = 0;
+        closeModals();
         document.querySelectorAll('.scene').forEach(scene => scene.hidden = true);
         document.getElementById('scene1').hidden = false;
     }
+    function openModal(id) { document.getElementById(id).classList.add('open'); }
+    function closeModals() { document.querySelectorAll('.modal').forEach(modal => modal.classList.remove('open')); }
+    function changeZoom(value) { document.documentElement.style.fontSize = value + '%'; }
+    function changeTheme(value) { document.body.style.background = value === 'soft' ? 'linear-gradient(135deg, #8fa7e8 0%, #a88bd1 100%)' : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'; }
 </script>
 </body>
 </html>
