@@ -62,8 +62,12 @@
         .stat strong { display: block; font-size: 1.5rem; }
         @media (max-width: 560px) { .stats { grid-template-columns: 1fr; } }
         .back { margin-top: 28px; color: var(--muted); font: 14px Arial, sans-serif; }
+        .site-footer { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #dee2e6; color: var(--muted); font: 14px Arial, sans-serif; }
+        .site-footer a { display: inline; width: auto; padding: 0; color: #667eea; background: none; box-shadow: none; font-weight: 700; }
+        .site-footer a:hover { transform: none; }
+        .site-footer .version { padding: 4px 12px; color: white; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 999px; font-weight: 700; }
         strong { color: #667eea; }
-        @media (max-width: 600px) { body { padding: 12px; } main { padding: 28px 20px; } .top-menu { top: 8px; right: 8px; } }
+        @media (max-width: 600px) { body { padding: 12px; } main { padding: 28px 20px; } .top-menu { top: 8px; right: 8px; } .site-footer { gap: 7px; font-size: 12px; } }
     </style>
 </head>
 <body>
@@ -139,6 +143,14 @@
         <p class="source">Основа: «Протидія кібершахрайству: аналіз схем, інструменти виявлення та захист особистості», розділ 3.2 та приклад із життя на с. 106.</p>
     </section>
     <a class="back" href="index.html">← Повернутися до добірки історій</a>
+    <footer class="site-footer">
+        <span aria-hidden="true">🧑‍💻</span>
+        <span>Розробник:</span>
+        <a href="https://sargeras197.github.io/contacts/">Сергій Євдокимов</a>
+        <span aria-hidden="true">📌</span>
+        <span class="version">v. 0.04</span>
+        <time datetime="2026-10-14">від 14.10.2026</time>
+    </footer>
 </main>
 <script>
     let safeCount = 0;
