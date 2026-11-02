@@ -76,10 +76,12 @@
 <div class="modal" id="mapModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>🗺️ Інтерактивна карта історії</h2><p class="lead">Потік кейсу у вигляді дерева рішень</p><div class="story-map"><div class="map-level"><small>Початок</small><span class="map-node">★</span><strong>Несподіване зарахування</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">?</span><span>Перевірити в банку</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Зберегти повідомлення</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Повернути одразу</span></div></div><div class="map-level"><small>Тиск</small><span class="map-node">?</span><strong>Прохання про іншу картку</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">?</span><span>Діяти через банк</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Зафіксувати докази</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Переказати кошти</span></div></div><div class="map-level"><small>Фінал</small><span class="map-node">◆</span><strong>Не стати ланкою схеми</strong></div></div><button onclick="closeModals()">↩️ Повернутися до історії</button></div></div>
 <div class="modal" id="supportModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>💬 Підтримка та довідка</h2><p>Тут зібрано все необхідне для комфортного користування платформою. Оберіть потрібний підпункт.</p><details class="support-section" open><summary>📖 Як користуватися платформою</summary><p><strong>1. Почніть історію.</strong> Натисніть «Увійти в історію».</p><p><strong>2. Читайте уважно.</strong> Кожна сцена містить реальний кейс і підказки.</p><p><strong>3. Обирайте дію.</strong> Рішення змінюють маршрут і підсумок.</p><p><strong>4. Досліджуйте повторно.</strong> Карта показує всі етапи та розгалуження.</p><p><strong>5. Налаштуйте досвід.</strong> У меню можна змінити тему, масштаб і скинути прогрес.</p></details><details class="support-section"><summary>🛡️ Про платформу</summary><p><strong>«Помилковий переказ»</strong> — навчальна адаптація реального сценарію «сліпого мула».</p><p>Імена й діалоги змінено, але фактична схема та правила безпечної реакції збережені.</p></details><details class="support-section"><summary>📚 Терміни простими словами</summary><p><strong>«Сліпий мул»</strong> — людина, через чию картку проходять чужі кошти.</p><p><strong>Помилковий переказ</strong> — привід для тиску, коли шахрай просить повернути реальне зарахування на іншу картку.</p><p><strong>Офіційна процедура</strong> — повернення коштів через банк, а не за реквізитами з приватного повідомлення.</p></details><details class="support-section"><summary>👨‍💻 Автор і джерело</summary><p><strong>Автор і розробник:</strong> Сергій Євдокимов</p><p>Поставити запитання, повідомити про помилку або запропонувати покращення можна через сторінку контактів:</p><p><a href="https://sargeras197.github.io/contacts/" target="_blank" rel="noopener noreferrer">🔗 Відкрити контакти автора</a></p><p>Посилання на соціальні мережі та інші актуальні канали зв’язку доступні на цій сторінці.</p><p><strong>Джерело:</strong> «ПРОТИДІЯ ШАХРАЙСТВУ Платформи оголошень та цифрові псевдопослуги», розділ 5.2, с. 188.</p></details><details class="support-section"><summary>📰 Новини та оновлення</summary><h3>✅ Виконано</h3><p>Додано реальний сценарій «сліпого мула» та помилкового переказу.</p><h3>🔜 Заплановано</h3><p>Нові навчальні кейси з книги та короткі перевірки після ключових сцен.</p></details></div></div>
 <main>
-    <p class="label">Реальний сценарій із книги «Протидія кібершахрайству: аналіз схем, інструменти виявлення та захист особистості» · розділ 5.2</p>
-    <h1>Помилковий переказ</h1>
-    <p class="lead">Андрій, майстер із ремонту техніки, звик довіряти людям і не хоче залишити чужу помилку без відповіді. Коли на його картку приходять несподівані гроші, добрий намір стикається з тиском незнайомця. Інтерактивна історія допоможе побачити, як не стати проміжною ланкою шахрайської схеми.</p>
-    <div class="choices"><button class="start-button" onclick="startStory()">🚀 Увійти в історію</button></div>
+    <p class="label">Реальний кейс із книги «Протидія кібершахрайству: аналіз схем, інструменти виявлення та захист особистості» · розділ 5.2</p>
+    <div class="story-intro">
+        <h1>Помилковий переказ</h1>
+        <p class="lead">Андрій, майстер із ремонту техніки, звик довіряти людям і не хоче залишити чужу помилку без відповіді. Коли на його картку приходять несподівані гроші, добрий намір стикається з тиском незнайомця. Інтерактивна історія допоможе побачити, як не стати проміжною ланкою шахрайської схеми.</p>
+        <div class="choices"><button class="start-button" onclick="startStory()">🚀 Увійти в історію</button></div>
+    </div>
     <section class="panel scene case" id="scene1" hidden>
         <p class="scene-number">Сцена 1 · Несподіване зарахування</p>
         <p>На картку Андрія несподівано надходять гроші. Він саме купує деталі для ремонту сусідці, тому спершу думає, що це оплата від клієнта, який забув попередити. Майже одразу незнайомка пише, що переказ був помилковим, і просить повернути суму на іншу картку.</p>
@@ -137,7 +139,7 @@
         <div class="stats"><div class="stat"><strong id="safeCount">0</strong>безпечних рішень</div><div class="stat"><strong id="riskCount">0</strong>ризикових рішень</div><div class="stat"><strong id="score">0</strong>балів</div></div>
         <div class="choices"><button onclick="restart()">🔄 Пройти історію ще раз</button></div>
     </section>
-    <section class="panel">
+    <section class="panel" id="caseInfo">
         <h2>Що показує цей кейс</h2>
         <p>Справжнє зарахування не означає, що прохання про повернення справжнє. Якщо гроші були викрадені в третьої особи, ваш переказ може зробити вас ланкою злочинної схеми. Не рухайте кошти без інструкції банку.</p>
         <p class="source">Основа: «Протидія кібершахрайству: аналіз схем, інструменти виявлення та захист особистості», розділ 5.2 «Помилковий переказ» або «Сліпий мул», с. 188.</p>
@@ -175,7 +177,7 @@
             ? 'Андрій має повідомлення, реквізити й час зарахування. Навіть після ризикового кроку ці докази допоможуть банку та правоохоронцям побачити ланцюжок переказів.'
             : 'Андрій розуміє, що Ірина могла бути такою самою обманутою людиною, а справжній шахрай залишився за кадром. Він передає банку всю історію розмови.';
     }
-    function startStory() { document.getElementById('scene1').hidden = false; document.querySelector('.start-button').parentElement.hidden = true; }
+    function startStory() { document.getElementById('scene1').hidden = false; document.getElementById('caseInfo').hidden = true; document.querySelector('.story-intro').hidden = true; }
     function continueStory(type, points) {
         if (type === 'safe') { safeCount += 1; score += points; } else riskCount += 1;
         route.push(type);
@@ -190,6 +192,7 @@
         route.push(type);
         document.getElementById('scene5').hidden = true;
         document.getElementById('final').hidden = false;
+        document.getElementById('caseInfo').hidden = false;
         document.getElementById('safeCount').textContent = safeCount;
         document.getElementById('riskCount').textContent = riskCount;
         document.getElementById('score').textContent = score;
@@ -201,6 +204,7 @@
         updateBranchText();
         document.querySelectorAll('.scene').forEach(scene => scene.hidden = true);
         document.getElementById('scene1').hidden = false;
+        document.getElementById('caseInfo').hidden = true;
     }
     function openModal(id) { document.getElementById(id).classList.add('open'); }
     function closeModals() { document.querySelectorAll('.modal').forEach(modal => modal.classList.remove('open')); }
