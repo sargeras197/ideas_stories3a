@@ -73,7 +73,7 @@
 <body>
 <div class="top-menu"><button class="menu-icon" onclick="openModal('settingsModal')" title="Налаштування">⚙️</button><button class="menu-icon" onclick="openModal('mapModal')" title="Карта історії">🗺️</button><button class="menu-icon" onclick="openModal('supportModal')" title="Підтримка">💬</button></div>
 <div class="modal" id="settingsModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>⚙️ Налаштування</h2><label class="setting-label" for="zoomRange">🔍 Масштабування</label><input id="zoomRange" type="range" min="90" max="120" value="100" oninput="changeZoom(this.value); document.getElementById('zoomValue').textContent = this.value + '%'"><span class="setting-value" id="zoomValue">100%</span><label class="setting-label" for="fontSelect">🔤 Шрифт тексту</label><select id="fontSelect" onchange="changeFont(this.value)"><option value="'Segoe UI', Tahoma, sans-serif">Segoe UI — нейтральний</option><option value="Verdana, sans-serif">Verdana — широкий і читабельний</option><option value="Georgia, serif">Georgia — книжковий</option></select><label class="setting-label" for="fontSizeSelect">📏 Розмір тексту</label><select id="fontSizeSelect" onchange="changeFontSize(this.value)"><option value="16px">Малий</option><option value="18px" selected>Середній</option><option value="20px">Великий</option><option value="22px">Дуже великий</option></select><label class="setting-label" for="themeSelect">🎨 Тема</label><select id="themeSelect" onchange="changeTheme(this.value)"><option value="light">☀️ Світла</option><option value="soft">🌤️ М'яка</option><option value="dark">🌙 Темна</option></select><label class="setting-label" for="languageSelect">🌍 Мова</label><select id="languageSelect"><option>🇺🇦 Українська</option><option>🇬🇧 English</option><option>🇵🇱 Polski</option></select><label class="setting-label">💾 Прогрес</label><button onclick="restart()">🔄 Скинути прогрес</button></div></div>
-<div class="modal" id="mapModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>🗺️ Інтерактивна карта історії</h2><p class="lead">Потік кейсу у вигляді дерева рішень</p><div class="story-map"><div class="map-level"><small>Початок</small><span class="map-node">★</span><strong>Дзвінок із підміненого номера</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">?</span><span>Перевірити номер</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Попросити паузу</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Повірити голосу</span></div></div><div class="map-level"><small>Перевірка</small><span class="map-node">?</span><strong>Офіційний канал</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">?</span><span>Не назвати код</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Зафіксувати докази</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Переказати кошти</span></div></div><div class="map-level"><small>Фінал</small><span class="map-node">◆</span><strong>Безпечна реакція або ризик</strong></div></div><button onclick="closeModals()">↩️ Повернутися до історії</button></div></div>
+<div class="modal" id="mapModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>🗺️ Інтерактивна карта історії</h2><p class="lead">12 сцен, рішення на кожному кроці та 5 можливих фіналів</p><div class="story-map"><div class="map-level"><small>Сцена 1</small><span class="map-node">★</span><strong>Дзвінок із підміненого номера</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">1</span><span>Перевірити номер</span></div><div class="map-branch"><span class="map-node safe">1</span><span>Попросити паузу</span></div><div class="map-branch"><span class="map-node">0</span><span>Повірити голосу</span></div></div><div class="map-level"><small>Сцени 2–4</small><span class="map-node">?</span><strong>Тиск, код із SMS і перевірка доказів</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">✓</span><span>Другий канал</span></div><div class="map-branch"><span class="map-node safe">✓</span><span>Пауза та фіксація</span></div><div class="map-branch"><span class="map-node">!</span><span>Дія під тиском</span></div></div><div class="map-level"><small>Сцени 5–8</small><span class="map-node">↗</span><strong>Протокол, навчання та репетиція</strong></div><div class="map-level"><small>Сцени 9–12</small><span class="map-node">◆</span><strong>Звичка перевіряти та спільний захист</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">✓</span><span>Правильний</span></div><div class="map-branch"><span class="map-node safe">≈</span><span>Середній</span></div><div class="map-branch"><span class="map-node">◆</span><span>Канонічний</span></div><div class="map-branch"><span class="map-node">!</span><span>Поганий</span></div><div class="map-branch"><span class="map-node">×</span><span>Найгірший</span></div></div></div><p><strong>Оцінка:</strong> кожне безпечне рішення додає бал. Канонічний фінал не обов’язково є правильним — він залежить від маршруту.</p><button onclick="closeModals()">↩️ Повернутися до історії</button></div></div>
 <div class="modal" id="supportModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>💬 Підтримка та довідка</h2><p>Тут зібрано все необхідне для комфортного користування платформою. Оберіть потрібний підпункт.</p><details class="support-section" open><summary>📖 Як користуватися платформою</summary><p><strong>1. Почніть історію.</strong> Натисніть «Увійти в історію».</p><p><strong>2. Читайте уважно.</strong> Кожна сцена містить реальний кейс і підказки.</p><p><strong>3. Обирайте дію.</strong> Рішення змінюють маршрут і підсумок.</p><p><strong>4. Досліджуйте повторно.</strong> Карта показує всі етапи та розгалуження.</p><p><strong>5. Налаштуйте досвід.</strong> У меню можна змінити тему, масштаб і скинути прогрес.</p></details><details class="support-section"><summary>🛡️ Про платформу</summary><p><strong>«Дзвінок від директора»</strong> — навчальна адаптація реального кейсу з Полтави про підміну номера та голосу.</p><p>Імена й діалоги змінено, але фактична схема та правила безпечної реакції збережені.</p></details><details class="support-section"><summary>📚 Терміни простими словами</summary><p><strong>Caller ID</strong> — номер, який показується на екрані. Його можна підмінити.</p><p><strong>ШІ-голос</strong> — штучно створений голос, схожий на голос знайомої людини.</p><p><strong>Соціальна інженерія</strong> — тиск через страх, довіру або терміновість.</p></details><details class="support-section"><summary>👨‍💻 Автор і джерело</summary><p><strong>Автор і розробник:</strong> Сергій Євдокимов</p><p>Поставити запитання, повідомити про помилку або запропонувати покращення можна через сторінку контактів:</p><p><a href="https://sargeras197.github.io/contacts/" target="_blank" rel="noopener noreferrer">🔗 Відкрити контакти автора</a></p><p>Посилання на соціальні мережі та інші актуальні канали зв’язку доступні на цій сторінці.</p><p><strong>Джерело:</strong> «ПРОТИДІЯ ШАХРАЙСТВУ Платформи оголошень та цифрові псевдопослуги», розділ 3.2, приклад із Полтави, с. 106.</p></details><details class="support-section"><summary>📰 Новини та оновлення</summary><h3>✅ Виконано</h3><p>Додано реальний кейс із Полтави про підміну номера та голосу.</p><h3>🔜 Заплановано</h3><p>Нові навчальні кейси з книги та короткі перевірки після ключових сцен.</p></details></div></div>
 <main>
     <p class="label">Реальний кейс із книги «Протидія кібершахрайству: аналіз схем, інструменти виявлення та захист особистості» · розділ 3.2</p>
@@ -211,9 +211,10 @@
     </section>
     <section class="panel scene" id="final" hidden>
         <p class="scene-number">Фінал · Що ти забереш із кейсу</p>
-        <h2>Довіра потребує перевірки</h2>
+        <h2 id="endingTitle">Довіра потребує перевірки</h2>
         <p id="finalText"></p>
-        <div class="stats"><div class="stat"><strong id="safeCount">0</strong>безпечних рішень</div><div class="stat"><strong id="riskCount">0</strong>ризикових рішень</div><div class="stat"><strong id="score">0</strong>балів</div></div>
+        <div class="stats"><div class="stat"><strong id="safeCount">0</strong>безпечних рішень</div><div class="stat"><strong id="riskCount">0</strong>ризикових рішень</div><div class="stat"><strong><span id="score">0</span>/<span id="maxScore">12</span></strong>балів (<span id="scorePercent">0</span>%)</div></div>
+        <div class="panel" id="decisionReview"></div>
         <div class="choices"><button onclick="restart()">🔄 Пройти історію ще раз</button></div>
     </section>
     <section class="panel" id="caseInfo">
@@ -236,13 +237,17 @@
     let riskCount = 0;
     let score = 0;
     let route = [];
+    const decisions = [];
+    const maxScore = 12;
     function choose(scene, type, points) {
         if (type === 'risk') riskCount += 1; else safeCount += 1;
         score += points;
         route.push(type);
+        decisions.push({ type, points, scene, text: document.activeElement && document.activeElement.tagName === 'BUTTON' ? document.activeElement.textContent.trim() : 'Рішення без тексту', explanation: explainDecision(scene, type) });
         updateBranchText();
         document.getElementById('scene' + scene).hidden = true;
         document.getElementById('scene' + (scene + 1)).hidden = false;
+        shuffleChoices(scene + 1);
     }
     function updateBranchText() {
         const first = route[0];
@@ -259,7 +264,7 @@
             ? 'Колеги дізнаються про спробу шахрайства після втручання банку. Команда розбирає помилку без звинувачень і створює правило: жоден платіж не підтверджується одним дзвінком.'
             : 'Колеги дізнаються, що подібний дзвінок отримали ще кілька людей. Олена та Марко змінюють правило: жоден платіж не підтверджується одним дзвінком.';
     }
-    function startStory() { document.getElementById('scene1').hidden = false; document.getElementById('caseInfo').hidden = true; document.querySelector('.story-intro').hidden = true; }
+    function startStory() { document.getElementById('scene1').hidden = false; document.getElementById('caseInfo').hidden = true; document.querySelector('.story-intro').hidden = true; shuffleChoices(1); }
     function continueStory(type, points) {
         if (type === 'risk') riskCount += 1; else safeCount += 1;
         score += points;
@@ -274,22 +279,65 @@
         if (type === 'risk') riskCount += 1; else safeCount += 1;
         score += points;
         route.push(type);
+        decisions.push({ type, points, scene: 12, text: document.activeElement && document.activeElement.tagName === 'BUTTON' ? document.activeElement.textContent.trim() : 'Рішення без тексту', explanation: explainDecision(12, type) });
         document.getElementById('scene12').hidden = true;
         document.getElementById('final').hidden = false;
         document.getElementById('caseInfo').hidden = false;
         document.getElementById('safeCount').textContent = safeCount;
         document.getElementById('riskCount').textContent = riskCount;
         document.getElementById('score').textContent = score;
-        const canonical = route.every(choice => choice !== 'risk');
-        document.getElementById('finalText').textContent = canonical ? 'Канонічний фінал: ти не дозволив терміновості замінити перевірку. Підмінений номер і голос не стали доказом особи, а команда запровадила правило подвійної перевірки. Тепер ця історія працює як щеплення: наступного разу пауза буде не перешкодою, а автоматичною реакцією.' : 'Альтернативний фінал: ризиковий крок показав, чому знайомий номер і голос не є доказом. Навіть якщо помилка вже сталася, її можна зупинити: зафіксуй подію, повідом банк і команду, а надалі завжди перевіряй прохання іншим каналом і не передавай коди.';
+        const ending = getEnding();
+        document.getElementById('endingTitle').textContent = ending.name;
+        document.getElementById('scorePercent').textContent = Math.round(score / maxScore * 100);
+        document.getElementById('decisionReview').innerHTML = '<h3>Розбір прийнятих рішень</h3>' + decisions.map((decision, index) => '<p><strong>' + (index + 1) + '. Сцена ' + decision.scene + ': ' + (decision.points ? 'Безпечне рішення' : 'Ризикове рішення') + '</strong><br>' + escapeHtml(decision.text) + '<br><small>' + (decision.points ? 'Ти зменшив ризик і набрав 1 бал.' : 'Цей крок посилив ризик і не додав балів.') + '</small><br><span>' + escapeHtml(decision.explanation) + '</span></p>').join('');
+        document.getElementById('finalText').textContent = ending.text;
+    }
+    function getEnding() {
+        const canonical = route[0] === 'risk' && route[1] === 'risk' && route[2] !== 'risk';
+        if (canonical) return { name: 'Канонічний фінал', text: 'Канонічний фінал: Олена майже дозволила тиску визначити рішення, але команда вчасно побачила схему. Ця гілка показує типовий розвиток подій за матеріалами кейсу: шахрай використовує авторитет, поспіх і страх підвести інших.' };
+        if (score === maxScore) return { name: 'Правильний фінал', text: 'Правильний фінал: ти послідовно перевіряв кожне прохання, не передавав коди й допоміг команді створити захист, який працює не лише для однієї людини.' };
+        if (score >= 8) return { name: 'Середньо-позитивний фінал', text: 'Середній фінал: більшість рішень були безпечними, але кілька компромісів могли дати шахраю додатковий шанс. Перевірка має бути правилом, а не випадковою паузою.' };
+        if (score >= 4) return { name: 'Поганий фінал', text: 'Поганий фінал: ризикові рішення не обов’язково одразу спричинили збитки, але створили для шахрая потрібний простір. Тепер важливо зафіксувати інцидент і змінити правило.' };
+        return { name: 'Найгірший фінал', text: 'Найгірший фінал: поспіх і довіра до номера випередили перевірку. Навіть після помилки не приховуй подію — звернися до банку, зафіксуй докази й попередь команду.' };
+    }
+    function explainDecision(scene, type) {
+        const explanations = {
+            1: 'Номер і голос можна підмінити, тому особу потрібно підтверджувати через незалежний офіційний канал.',
+            2: 'Код із SMS підтверджує дію в системі, а не особу співрозмовника. Тиск і заборона покласти слухавку — ознаки маніпуляції.',
+            3: 'Час, номер і повідомлення допомагають банку та поліції відновити події. Видалення доказів або дзвінок шахраю ускладнюють перевірку.',
+            4: 'Подвійна перевірка не затримує роботу без причини: вона зупиняє платіж, який може бути незворотним.',
+            5: 'Правило має діяти навіть тоді, коли всі втомлені або поспішають. Один знайомий голос не може замінити другий підпис чи канал.',
+            6: 'Процедура зменшує залежність від пам’яті та емоцій. Чітке правило працює краще, ніж надія, що кожен завжди буде уважним.',
+            7: 'Повний і чесний опис інциденту допомагає знайти джерело інформації та закрити пролом, не перетворюючи помилку на привід для мовчання.',
+            8: 'Репетиція вчить не лише правил, а й спокійної реакції на страх, поспіх та бажання не підвести колег.',
+            9: 'Звичка працює тоді, коли її застосовують до кожного незвичного прохання, навіть якщо воно здається очевидним.',
+            10: 'Безпечна культура дозволяє повідомити про підозру без сорому. Покарання за питання змушує людей приховувати інциденти.',
+            11: 'Система має перевіряти не пам’ять працівника, а здатність зупинити операцію, знайти допомогу та зберегти докази.',
+            12: 'Пауза повертає людині вибір. Знання імені або деталей про вас не доводить, що дзвонить справжня людина.'
+        };
+        const explanation = explanations[scene] || 'Оціни, чи спирається рішення на незалежну перевірку, а не на поспіх, страх або довіру до одного повідомлення.';
+        return type === 'risk' ? 'Чому це небезпечно: ' + explanation + ' Такий вибір залишає шахраю більше контролю над ситуацією.' : 'Чому так краще: ' + explanation + ' Саме тому цей крок зменшує ризик.';
+    }
+    function escapeHtml(value) { return value.replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[character])); }
+    function shuffleChoices(sceneNumber) {
+        const choices = document.querySelector('#scene' + sceneNumber + ' .choices');
+        if (!choices) return;
+        const buttons = Array.from(choices.children);
+        for (let index = buttons.length - 1; index > 0; index -= 1) {
+            const randomIndex = Math.floor(Math.random() * (index + 1));
+            choices.appendChild(buttons[randomIndex]);
+            buttons.splice(randomIndex, 1);
+        }
+        buttons.forEach(button => choices.appendChild(button));
     }
     function restart() {
-        safeCount = 0; riskCount = 0;         score = 0; route = [];
+        safeCount = 0; riskCount = 0; score = 0; route = []; decisions.length = 0;
         closeModals();
         updateBranchText();
         document.querySelectorAll('.scene').forEach(scene => scene.hidden = true);
         document.getElementById('scene1').hidden = false;
         document.getElementById('caseInfo').hidden = true;
+        shuffleChoices(1);
     }
     function openModal(id) { document.getElementById(id).classList.add('open'); }
     function closeModals() { document.querySelectorAll('.modal').forEach(modal => modal.classList.remove('open')); }

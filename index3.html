@@ -73,7 +73,7 @@
 <body>
 <div class="top-menu"><button class="menu-icon" onclick="openModal('settingsModal')" title="Налаштування">⚙️</button><button class="menu-icon" onclick="openModal('mapModal')" title="Карта історії">🗺️</button><button class="menu-icon" onclick="openModal('supportModal')" title="Підтримка">💬</button></div>
 <div class="modal" id="settingsModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>⚙️ Налаштування</h2><label class="setting-label" for="zoomRange">🔍 Масштабування</label><input id="zoomRange" type="range" min="90" max="120" value="100" oninput="changeZoom(this.value); document.getElementById('zoomValue').textContent = this.value + '%'"><span class="setting-value" id="zoomValue">100%</span><label class="setting-label" for="fontSelect">🔤 Шрифт тексту</label><select id="fontSelect" onchange="changeFont(this.value)"><option value="'Segoe UI', Tahoma, sans-serif">Segoe UI — нейтральний</option><option value="Verdana, sans-serif">Verdana — широкий і читабельний</option><option value="Georgia, serif">Georgia — книжковий</option></select><label class="setting-label" for="fontSizeSelect">📏 Розмір тексту</label><select id="fontSizeSelect" onchange="changeFontSize(this.value)"><option value="16px">Малий</option><option value="18px" selected>Середній</option><option value="20px">Великий</option><option value="22px">Дуже великий</option></select><label class="setting-label" for="themeSelect">🎨 Тема</label><select id="themeSelect" onchange="changeTheme(this.value)"><option value="light">☀️ Світла</option><option value="soft">🌤️ М'яка</option><option value="dark">🌙 Темна</option></select><label class="setting-label" for="languageSelect">🌍 Мова</label><select id="languageSelect"><option>🇺🇦 Українська</option><option>🇬🇧 English</option><option>🇵🇱 Polski</option></select><label class="setting-label">💾 Прогрес</label><button onclick="restart()">🔄 Скинути прогрес</button></div></div>
-<div class="modal" id="mapModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>🗺️ Інтерактивна карта історії</h2><p class="lead">Потік кейсу у вигляді дерева рішень</p><div class="story-map"><div class="map-level"><small>Початок</small><span class="map-node">★</span><strong>Несподіване зарахування</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">?</span><span>Перевірити в банку</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Зберегти повідомлення</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Повернути одразу</span></div></div><div class="map-level"><small>Тиск</small><span class="map-node">?</span><strong>Прохання про іншу картку</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">?</span><span>Діяти через банк</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Зафіксувати докази</span></div><div class="map-branch"><span class="map-node safe">?</span><span>Переказати кошти</span></div></div><div class="map-level"><small>Фінал</small><span class="map-node">◆</span><strong>Не стати ланкою схеми</strong></div></div><button onclick="closeModals()">↩️ Повернутися до історії</button></div></div>
+<div class="modal" id="mapModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>🗺️ Інтерактивна карта історії</h2><p class="lead">12 сцен, рішення на кожному кроці та 5 можливих фіналів</p><div class="story-map"><div class="map-level"><small>Сцена 1</small><span class="map-node">★</span><strong>Несподіване зарахування</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">1</span><span>Перевірити в банку</span></div><div class="map-branch"><span class="map-node safe">1</span><span>Зберегти повідомлення</span></div><div class="map-branch"><span class="map-node">0</span><span>Повернути одразу</span></div></div><div class="map-level"><small>Сцени 2–4</small><span class="map-node">?</span><strong>Тиск, інша картка та офіційна процедура</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">✓</span><span>Діяти через банк</span></div><div class="map-branch"><span class="map-node safe">✓</span><span>Зберегти докази</span></div><div class="map-branch"><span class="map-node">!</span><span>Переказати кошти</span></div></div><div class="map-level"><small>Сцени 5–8</small><span class="map-node">↗</span><strong>Ланцюжок коштів і межі допомоги</strong></div><div class="map-level"><small>Сцени 9–12</small><span class="map-node">◆</span><strong>Процедура замість поспіху</strong></div><div class="map-branches"><div class="map-branch"><span class="map-node safe">✓</span><span>Правильний</span></div><div class="map-branch"><span class="map-node safe">≈</span><span>Середній</span></div><div class="map-branch"><span class="map-node">◆</span><span>Канонічний</span></div><div class="map-branch"><span class="map-node">!</span><span>Поганий</span></div><div class="map-branch"><span class="map-node">×</span><span>Найгірший</span></div></div></div><p><strong>Оцінка:</strong> кожне безпечне рішення додає бал. Канонічний фінал не обов’язково є правильним — він залежить від маршруту.</p><button onclick="closeModals()">↩️ Повернутися до історії</button></div></div>
 <div class="modal" id="supportModal"><div class="modal-card"><button class="modal-close" onclick="closeModals()">×</button><h2>💬 Підтримка та довідка</h2><p>Тут зібрано все необхідне для комфортного користування платформою. Оберіть потрібний підпункт.</p><details class="support-section" open><summary>📖 Як користуватися платформою</summary><p><strong>1. Почніть історію.</strong> Натисніть «Увійти в історію».</p><p><strong>2. Читайте уважно.</strong> Кожна сцена містить реальний кейс і підказки.</p><p><strong>3. Обирайте дію.</strong> Рішення змінюють маршрут і підсумок.</p><p><strong>4. Досліджуйте повторно.</strong> Карта показує всі етапи та розгалуження.</p><p><strong>5. Налаштуйте досвід.</strong> У меню можна змінити тему, масштаб і скинути прогрес.</p></details><details class="support-section"><summary>🛡️ Про платформу</summary><p><strong>«Помилковий переказ»</strong> — навчальна адаптація реального сценарію «сліпого мула».</p><p>Імена й діалоги змінено, але фактична схема та правила безпечної реакції збережені.</p></details><details class="support-section"><summary>📚 Терміни простими словами</summary><p><strong>«Сліпий мул»</strong> — людина, через чию картку проходять чужі кошти.</p><p><strong>Помилковий переказ</strong> — привід для тиску, коли шахрай просить повернути реальне зарахування на іншу картку.</p><p><strong>Офіційна процедура</strong> — повернення коштів через банк, а не за реквізитами з приватного повідомлення.</p></details><details class="support-section"><summary>👨‍💻 Автор і джерело</summary><p><strong>Автор і розробник:</strong> Сергій Євдокимов</p><p>Поставити запитання, повідомити про помилку або запропонувати покращення можна через сторінку контактів:</p><p><a href="https://sargeras197.github.io/contacts/" target="_blank" rel="noopener noreferrer">🔗 Відкрити контакти автора</a></p><p>Посилання на соціальні мережі та інші актуальні канали зв’язку доступні на цій сторінці.</p><p><strong>Джерело:</strong> «ПРОТИДІЯ ШАХРАЙСТВУ Платформи оголошень та цифрові псевдопослуги», розділ 5.2, с. 188.</p></details><details class="support-section"><summary>📰 Новини та оновлення</summary><h3>✅ Виконано</h3><p>Додано реальний сценарій «сліпого мула» та помилкового переказу.</p><h3>🔜 Заплановано</h3><p>Нові навчальні кейси з книги та короткі перевірки після ключових сцен.</p></details></div></div>
 <main>
     <p class="label">Реальний кейс із книги «Протидія кібершахрайству: аналіз схем, інструменти виявлення та захист особистості» · розділ 5.2</p>
@@ -211,9 +211,10 @@
     </section>
     <section class="panel scene" id="final" hidden>
         <p class="scene-number">Фінал · Ти не став ланкою схеми</p>
-        <h2>Повернення коштів має проходити через банк</h2>
+        <h2 id="endingTitle">Повернення коштів має проходити через банк</h2>
         <p id="finalText"></p>
-        <div class="stats"><div class="stat"><strong id="safeCount">0</strong>безпечних рішень</div><div class="stat"><strong id="riskCount">0</strong>ризикових рішень</div><div class="stat"><strong id="score">0</strong>балів</div></div>
+        <div class="stats"><div class="stat"><strong id="safeCount">0</strong>безпечних рішень</div><div class="stat"><strong id="riskCount">0</strong>ризикових рішень</div><div class="stat"><strong><span id="score">0</span>/<span id="maxScore">12</span></strong>балів (<span id="scorePercent">0</span>%)</div></div>
+        <div class="panel" id="decisionReview"></div>
         <div class="choices"><button onclick="restart()">🔄 Пройти історію ще раз</button></div>
     </section>
     <section class="panel" id="caseInfo">
@@ -236,12 +237,16 @@
     let riskCount = 0;
     let score = 0;
     let route = [];
+    const decisions = [];
+    const maxScore = 12;
     function choose(scene, type, points) {
         if (type === 'safe') { safeCount += 1; score += points; } else riskCount += 1;
         route.push(type);
+        decisions.push({ type, points, scene, text: document.activeElement && document.activeElement.tagName === 'BUTTON' ? document.activeElement.textContent.trim() : 'Рішення без тексту', explanation: explainDecision(scene, type) });
         updateBranchText();
         document.getElementById('scene' + scene).hidden = true;
         document.getElementById('scene' + (scene + 1)).hidden = false;
+        shuffleChoices(scene + 1);
     }
     function updateBranchText() {
         document.getElementById('scene2Context').textContent = route[0] === 'risk'
@@ -254,7 +259,7 @@
             ? 'Андрій має повідомлення, реквізити й час зарахування. Навіть після ризикового кроку ці докази допоможуть банку та правоохоронцям побачити ланцюжок переказів.'
             : 'Андрій розуміє, що Ірина могла бути такою самою обманутою людиною, а справжній шахрай залишився за кадром. Він передає банку всю історію розмови.';
     }
-    function startStory() { document.getElementById('scene1').hidden = false; document.getElementById('caseInfo').hidden = true; document.querySelector('.story-intro').hidden = true; }
+    function startStory() { document.getElementById('scene1').hidden = false; document.getElementById('caseInfo').hidden = true; document.querySelector('.story-intro').hidden = true; shuffleChoices(1); }
     function continueStory(type, points) {
         if (type === 'safe') { safeCount += 1; score += points; } else riskCount += 1;
         route.push(type);
@@ -267,21 +272,65 @@
     function finish(type, points) {
         if (type === 'safe') { safeCount += 1; score += points; } else riskCount += 1;
         route.push(type);
+        decisions.push({ type, points, scene: 12, text: document.activeElement && document.activeElement.tagName === 'BUTTON' ? document.activeElement.textContent.trim() : 'Рішення без тексту', explanation: explainDecision(12, type) });
         document.getElementById('scene12').hidden = true;
         document.getElementById('final').hidden = false;
         document.getElementById('caseInfo').hidden = false;
         document.getElementById('safeCount').textContent = safeCount;
         document.getElementById('riskCount').textContent = riskCount;
         document.getElementById('score').textContent = score;
-        document.getElementById('finalText').textContent = route.every(choice => choice === 'safe') ? 'Канонічний фінал: ти не переказав кошти під тиском і залишив банку дані для перевірки. Це безпечна реакція на схему «сліпого мула», яка не лише захищає твій рахунок, а й допомагає побачити весь ланцюжок.' : 'Альтернативний фінал: навіть реальне зарахування не робить прохання незнайомця безпечним. Ризиковий крок показав, чому кошти не можна переміщати без банку; якщо помилка вже сталася, збережи докази й негайно повідом офіційні служби.';
+        const ending = getEnding();
+        document.getElementById('endingTitle').textContent = ending.name;
+        document.getElementById('scorePercent').textContent = Math.round(score / maxScore * 100);
+        document.getElementById('decisionReview').innerHTML = '<h3>Розбір прийнятих рішень</h3>' + decisions.map((decision, index) => '<p><strong>' + (index + 1) + '. Сцена ' + decision.scene + ': ' + (decision.points ? 'Безпечне рішення' : 'Ризикове рішення') + '</strong><br>' + escapeHtml(decision.text) + '<br><small>' + (decision.points ? 'Ти зменшив ризик і набрав 1 бал.' : 'Цей крок посилив ризик і не додав балів.') + '</small><br><span>' + escapeHtml(decision.explanation) + '</span></p>').join('');
+        document.getElementById('finalText').textContent = ending.text;
+    }
+    function getEnding() {
+        const canonical = route[0] === 'risk' && route[1] === 'risk' && route[2] !== 'risk';
+        if (canonical) return { name: 'Канонічний фінал', text: 'Канонічний фінал: Андрій зробив поспішний крок назустріч незнайомцю, але вчасно передав банку докази. Ця гілка показує типову логіку схеми «сліпого мула»: добрий намір намагаються перетворити на рух чужих коштів.' };
+        if (score === maxScore) return { name: 'Правильний фінал', text: 'Правильний фінал: ти не рухав кошти самостійно, зберіг докази й залишив банку можливість перевірити весь ланцюжок.' };
+        if (score >= 8) return { name: 'Середньо-позитивний фінал', text: 'Середній фінал: ти здебільшого діяв правильно, але окремі поступки тиску могли зробити тебе ланкою схеми. Повернення має проходити тільки через банк.' };
+        if (score >= 4) return { name: 'Поганий фінал', text: 'Поганий фінал: ризикові дії ускладнили перевірку й могли перемістити чужі кошти далі. Не видаляй докази та негайно повідом банк.' };
+        return { name: 'Найгірший фінал', text: 'Найгірший фінал: поспіх перетворив добрий намір на участь у чужому ланцюжку. Не передавай коди чи дані картки, зупини перекази та звернися до банку.' };
+    }
+    function explainDecision(scene, type) {
+        const explanations = {
+            1: 'Несподіване зарахування не доводить, що прохання про повернення справжнє. Спочатку потрібно перевірити операцію через власний банк.',
+            2: 'Інша картка та вимога швидкості можуть бути способом провести чужі кошти через твій рахунок. Емоційна історія не замінює процедуру.',
+            3: 'Банк може перевірити походження платежу й безпечно запустити повернення. Самостійний переказ змінює ланцюжок і створює новий ризик.',
+            4: 'Скриншоти, реквізити й час потрібні, щоб побачити маршрут коштів. Видалення листування позбавляє банк важливих доказів.',
+            5: 'Після звернення краще не продовжувати приватні переговори. Нові прохання можуть бути наступним етапом тиску або спробою отримати дані.',
+            6: 'Навіть правдива історія не дає незнайомцю права керувати твоїм рахунком. Офіційний канал захищає і тебе, і можливу іншу потерпілу людину.',
+            7: 'Повна хронологія допомагає побачити зв’язок між операціями. Важливо відокремлювати перевірені факти від припущень.',
+            8: 'Допомога не означає виконання чужої інструкції. Порада звернутися до банку зберігає співчуття, але не робить тебе посередником.',
+            9: 'Не рухати кошти та діяти за процедурою — головний захист від схеми «сліпого мула». Швидкість не важливіша за контроль.',
+            10: 'Коди, фото картки та персональні дані не потрібні для стандартного повернення коштів. Їхнє розкриття може відкрити новий шлях до рахунку.',
+            11: 'Незручні повідомлення теж можуть бути доказами тиску й зміни реквізитів. Повна історія корисніша за «акуратно» відредаговану.',
+            12: 'Добрий намір стає безпечним лише разом із перевіркою. Банк має повноваження перевірити та повернути кошти, приватний чат — ні.'
+        };
+        const explanation = explanations[scene] || 'Не переміщуй кошти самостійно: спочатку перевір операцію, збережи докази та звернися до банку.';
+        return type === 'risk' ? 'Чому це небезпечно: ' + explanation + ' Такий вибір може зробити тебе ланкою чужої схеми.' : 'Чому так краще: ' + explanation + ' Саме тому цей крок зменшує ризик.';
+    }
+    function escapeHtml(value) { return value.replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[character])); }
+    function shuffleChoices(sceneNumber) {
+        const choices = document.querySelector('#scene' + sceneNumber + ' .choices');
+        if (!choices) return;
+        const buttons = Array.from(choices.children);
+        for (let index = buttons.length - 1; index > 0; index -= 1) {
+            const randomIndex = Math.floor(Math.random() * (index + 1));
+            choices.appendChild(buttons[randomIndex]);
+            buttons.splice(randomIndex, 1);
+        }
+        buttons.forEach(button => choices.appendChild(button));
     }
     function restart() {
-        safeCount = 0; riskCount = 0; score = 0; route = [];
+        safeCount = 0; riskCount = 0; score = 0; route = []; decisions.length = 0;
         closeModals();
         updateBranchText();
         document.querySelectorAll('.scene').forEach(scene => scene.hidden = true);
         document.getElementById('scene1').hidden = false;
         document.getElementById('caseInfo').hidden = true;
+        shuffleChoices(1);
     }
     function openModal(id) { document.getElementById(id).classList.add('open'); }
     function closeModals() { document.querySelectorAll('.modal').forEach(modal => modal.classList.remove('open')); }
